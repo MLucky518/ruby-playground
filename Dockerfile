@@ -25,8 +25,8 @@ RUN pip3 install --no-cache-dir --break-system-packages jupyter jupyterlab noteb
 # Install IRuby and register kernel
 RUN gem install iruby && iruby register --force
 
-# Install Ruby OpenAI SDK
-RUN gem install ruby-openai
+# Install Ruby OpenAI SDK and async gem
+RUN gem install ruby-openai async
 
 # Confirm kernel was registered
 RUN jupyter kernelspec list
@@ -38,8 +38,14 @@ WORKDIR /workspace
 COPY Gemfile Gemfile.lock* ./
 RUN bundle install || true
 
+# Create scripts directory
+RUN mkdir -p /workspace/scripts
+
 # Expose Jupyter port
 EXPOSE 8888
+
+# Copy scripts if they exist
+COPY scripts/ /workspace/scripts/
 
 # Start Jupyter Lab with no token
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--NotebookApp.token=''"]
