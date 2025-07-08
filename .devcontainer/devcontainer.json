@@ -1,0 +1,15 @@
+{
+    "name": "Ruby-OpenAI Notebook",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/workspace",
+    "forwardPorts": [8888],
+    "postCreateCommand": "bundle install",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    }
+}

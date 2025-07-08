@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "-i",
+    "ruby-openai-playground-dev-1",
+    "jupyter",
+    "kernelgateway",
+    "--KernelGatewayApp.ip=0.0.0.0",
+    "--KernelGatewayApp.port=8888",
+    "--KernelGatewayApp.allow_origin='*'",
+    "--KernelGatewayApp.allow_credentials='true'"
+  ],
+  "display_name": "Ruby (Docker)",
+  "language": "ruby"
+}
